@@ -31,3 +31,4 @@ $stmt = $conn->prepare("INSERT INTO blog (title, body, date_created) VALUES (?, 
 
 
 ?>
+
