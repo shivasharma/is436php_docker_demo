@@ -1,23 +1,17 @@
 <?php
+// Database credentials
+$host = 'db'; // Use the service name of the MySQL container as the hostname
+$user = 'lamp_demo';
+$password = 'password';
+$database = 'lamp_demo';
 
-$connect = mysqli_connect(
-    'db',
-    'lamp_demo',
-    'password',
-    'lamp_demo'
-);
+// Create connection
+$conn = mysqli_connect($host, $user, $password, $database);
 
-$query = 'SELECT * FROM blog';
-$result = mysqli_query($connect, $query);
-
-echo '<h1>MySQL Content:</h1>';
-
-while($record = mysqli_fetch_assoc($result))
-{
-    echo '<h2>'.$record['title'].'</h2>';
-    echo '<p>'.$record['body'].'</p>';
-    echo 'Posted: '.$record['date_created'];
-    echo '<hr>';
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-
+echo "Connected successfully";
 ?>
+
