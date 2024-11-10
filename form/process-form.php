@@ -1,4 +1,19 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Table</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <?php 
   $connect = mysqli_connect(
     'db',
@@ -19,28 +34,31 @@ if (mysqli_num_rows($result) > 0) {
 
   # showing each record through foreach loop
 
-  foreach ($allUsers as $user) {
-    <table class="table table-striped table-bordered">
-    <thead class="thead-dark">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Age</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><?php echo $user['id']; ?></td>
-            <td><?php echo $user['title']; ?></td>
-            <td><?php echo $user['body']; ?></td>
-            <td><?php echo $user['date_created']; ?></td>
-        </tr>
-    echo "{$user['title']} |
-     {$user['body']} |
-      {$user['date_created']}
-       \n";
-  }
+    echo '<table class="table table-striped border-success">';
+    echo '<thead>';
+    echo '<tr>';
+    echo '<th scope="col">#</th>';
+    echo '<th scope="col">Title</th>';
+    echo '<th scope="col">Body</th>';
+    echo '<th scope="col">Date Created</th>';
+    echo '<th scope="col">Actions</th>';
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
+
+    foreach ($allUsers as $index => $user) {
+      echo '<tr>';
+      echo '<th scope="row">' . ($index + 1) . '</th>';
+      echo '<td>' . $user['title'] . '</td>';
+      echo '<td>' . $user['body'] . '</td>';
+      echo '<td>' . $user['date_created'] . '</td>';
+      echo '<td><a href="edit.php?id=' . $user['id'] . '">Edit</a></td>';
+      echo '</tr>';
+    }
+
+    echo '</tbody>';
+    echo '</table>';
+  
 
 }
   
@@ -81,3 +99,5 @@ $stmt = $conn->prepare("INSERT INTO blog (title, body, date_created) VALUES (?, 
 
 ?>
 
+</body>
+</html>
