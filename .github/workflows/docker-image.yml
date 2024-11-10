@@ -16,5 +16,5 @@ jobs:
       - name: push image to docker hub
         run: |
           docker login -u shivathebravo -p ${{ secrets.DOCKER_PASSWORD }}
-          dock tag shivathebravo/is436phpdemo:latest shivathebravo/is436phpdemo:latest
+          docker tag shivathebravo/is436phpdemo:latest shivathebravo/is436phpdemo:latest
           docker push  shivathebravo/is436phpdemo
