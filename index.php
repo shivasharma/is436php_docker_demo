@@ -26,41 +26,7 @@
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
  
-    <?php 
-  $connect = mysqli_connect(
-    'db',
-    'lamp_demo',
-    'password',
-    'lamp_demo'
-);
-
-$query = 'SELECT * FROM blog';
-$result = mysqli_query($connect, $query);
-  
- 
-  
-if (mysqli_num_rows($result) > 0) {
-  
-  # fetching all the records
-  $allUsers = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-  # showing each record through foreach loop
-
-
-
-
-  
-  foreach ($allUsers as $user) {
-
-    echo "{$user['title']} |
-     {$user['body']} |
-      {$user['date_created']}
-       \n";
-  }
-
-}
-  
-?>
+   
  
   </body>
 </html>
