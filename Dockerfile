@@ -1,7 +1,3 @@
-
-
-
-
 # Dockerfile for PHP with MySQLi
 # Use the PHP Apache image
 FROM php:8.1.1-apache

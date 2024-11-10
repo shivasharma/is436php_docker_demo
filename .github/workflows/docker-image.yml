@@ -3,10 +3,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'api/Dockerfile'
-      - 'front-end-nextjs/Dockerfile'
-
+  
 jobs:
   publish_images:
     runs-on: ubuntu-latest
@@ -15,10 +12,9 @@ jobs:
         uses: actions/checkout@v4
       - name: build image
         run: |
-          docker build ./api/ -t rishabkumar7/devops-qr-code-backend:latest
-          docker build ./front-end-nextjs/ -t rishabkumar7/devops-qr-code-frontend:latest
+          docker build -t shivathebravo/is436phpdemo:latest .
       - name: push image to docker hub
         run: |
-          docker login -u rishabkumar7 -p ${{ secrets.DOCKER_HUB_TOKEN }}
-          docker push rishabkumar7/devops-qr-code-backend:latest
-          docker push rishabkumar7/devops-qr-code-frontend:latest
+          docker login -u shivathebravo -p ${{ secrets.DOCKER_PASSWORD }}
+          dock tag shivathebravo/is436phpdemo:latest shivathebravo/is436phpdemo:latest
+          docker push  shivathebravo/is436phpdemo
