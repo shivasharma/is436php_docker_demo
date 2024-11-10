@@ -59,11 +59,9 @@ if (mysqli_num_rows($result) > 0) {
     echo '</tbody>';
     echo '</table>';
   
-
 }
   
 ?>
-
 
 
 <?php
